@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="content-wrapper">
+  <section class="container-fluid">
+    <div class="container-fluid">
+
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12 ">
+          <div class="card m-2">
+
+            <div class="card-body login-card-body">
+
+              <h5 class="login-box-msg">
+                Unauthorized
+              </h5>
+              <p class="login-box-msg">
+                You are not authorized to access this page
+                <a href="{{ url_for('profile.detail', id = current_user.id)}}" class="text-center">Home</a>
+              </p>
+            </div>
+            <!-- /.login-card-body -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+{% endblock %}

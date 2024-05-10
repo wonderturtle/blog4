@@ -1,0 +1,87 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Roles {% endblock %} 
+
+{% block content %} 
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Roles</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url_for('auth.index') }}">Home</a></li>
+              <li class="breadcrumb-item active">Roles</li>
+            </ol>
+          </div>
+          
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- section for the buttons -->
+    <section class="container-fluid">
+        <a class="btn btn-app bg-primary" href="{{ url_for('role.role_insert') }}"> 
+            <i class="fa fa-file"></i>
+            New
+        </a>
+        {% include 'includes/show_error.html' %} 
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Totale: {{ tot }}</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="roleTable" class="table table-striped table-bordered dataTableClass" width="100%">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Role</th>
+                    <th>Note</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for role in role_list %}
+                    <tr>
+                      <td><a href="{{ url_for('role.role_detail', id=role.id) }}">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                      </a></td>
+                      <td data-label="Role">{{ role.role }}</td>
+                      <td data-label="Note">{{ role.note }}</td>
+                    </tr>
+                  {% endfor %}csrf
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}  
+  {{ super() }}
+  {% include 'includes/datatables/style_and_script.html' %}
+{% endblock javascripts %}

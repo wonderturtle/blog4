@@ -1,0 +1,105 @@
+@media (max-width: 767px) {
+
+    /* Hide the button on smaller screens */
+    .dt-control-plus {
+        display: none !important;
+    }
+
+    /* Hide the table header */
+    .dataTableClass thead {
+        display: none;
+    }
+
+    /* Change the layout of the DataTable to a list of cards */
+    .dataTableClass tbody,
+    .dataTableClass tr {
+        display: block;
+        width: 100%;
+    }
+
+    .dataTableClass tr {
+        margin-bottom: 20px;
+        /* Adjust the margin as needed */
+        border: 1px solid #ddd;
+        /* Add border for card styling */
+        padding: 10px;
+        /* Add padding for card styling */
+        background-color: #f9f9f9;
+        /* Add background color for better visibility */
+    }
+
+    .dataTableClass td {
+        display: block;
+        margin-bottom: 5px;
+        /* Adjust the margin as needed */
+        white-space: normal !important;
+        /* Add word-wrap to allow text to wrap to the next line */
+    }
+
+    .dataTableClass td[data-label]::before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        margin-bottom: 5px;
+        /* Adjust the margin as needed */
+    }
+
+    .dataTableClass td::after {
+        content: attr(data-value);
+        display: block;
+        margin-bottom: 10px;
+        /* Adjust the margin as needed */
+    }
+
+
+
+
+
+
+
+
+
+    /* Hide the table header */
+    .dataTableServersideClass thead {
+        display: none;
+    }
+
+    /* Change the layout of the DataTable to a list of cards */
+    .dataTableServersideClass tbody,
+    .dataTableServersideClass tr {
+        display: block;
+        width: 100%;
+    }
+
+    .dataTableServersideClass tr {
+        margin-bottom: 20px;
+        /* Adjust the margin as needed */
+        border: 1px solid #ddd;
+        /* Add border for card styling */
+        padding: 10px;
+        /* Add padding for card styling */
+        background-color: #f9f9f9;
+        /* Add background color for better visibility */
+    }
+
+    .dataTableServersideClass td {
+        display: block;
+        margin-bottom: 5px;
+        /* Adjust the margin as needed */
+        white-space: normal !important;
+        /* Add word-wrap to allow text to wrap to the next line */
+    }
+
+    .dataTableServersideClass td[data-label]::before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        margin-bottom: 5px;
+        /* Adjust the margin as needed */
+    }
+
+    .dataTableServersideClass td::after {
+        content: attr(data-value);
+        display: block;
+        margin-bottom: 10px;
+        /* Adjust the margin as needed */
+    }
+}

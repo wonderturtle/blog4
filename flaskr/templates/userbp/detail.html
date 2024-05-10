@@ -1,0 +1,120 @@
+
+   {% extends "layouts/base.html" %}
+
+
+ 
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %} 
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{{title}}</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ url_for('auth.index') }}">Home</a></li>
+                        <li class="breadcrumb-item active">{{title }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container-fluid">
+        <a class="btn btn-app bg-primary" href="{{ url_for('userbp.edit', id=user.id) }}"> 
+            <i class="fa fa-file"></i>
+            Edit
+        </a>
+
+        
+        <a class="btn btn-app bg-danger" href="{{ url_for('userbp.delete', id=user.id) }}"> 
+            <i class="fa fa-trash"></i>
+            Delete
+        </a>
+        
+
+        <a class="btn btn-app bg-primary" href="{{ url_for('userbp.view') }}"> 
+            <i class="fa fa-undo"></i>
+            Back
+        </a>
+        {% include 'includes/show_error.html' %}   
+    </section>
+    
+
+    <section class="container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header bg-primary">
+                            <h3 class="card-title">{{ user.user}}</h3>
+                            
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {% for item in form %}
+                                {% if item.id not in ['submit', 'active', 'inserted_by', 'updated_by'] %}
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" disabled  >
+                                        </div>
+                                    </div>
+                                {% elif item.id == 'active' %}
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                        <div class="col-sm-10">
+                                            <input type="checkbox" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" disabled {% if item.data == 1 %} checked {% endif %} >
+                                        </div>
+                                    </div>
+                                    {% elif item.id == 'inserted_by' %} 
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}"  value="{{user.userinsert.name + ' ' + user.userinsert.surname}}" disabled  >
+                                         
+                                        </div>
+                                    </div>
+                                    {% elif item.id == 'updated_by' %}
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}"  value="{{user.userupdate.name + ' ' + user.userupdate.surname}}" disabled  >
+                                         
+                                        </div>
+                                    </div>
+                                {% endif %}
+                             {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+  {% endblock content %}
+
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %}  
+    {{ super() }}
+    
+  {% endblock javascripts %}
+

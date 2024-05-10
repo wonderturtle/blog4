@@ -1,0 +1,101 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} login-page {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="flaskr/static/assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="flaskr/static/assets/node_modules/icheck-bootstrap/icheck-bootstrap.min.css">
+  
+  <!-- Theme style -->
+  <link rel="stylesheet" href="flaskr/static/assets/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="login-box">
+
+    <div class="login-logo">
+    <b>BLOG2</a>
+    </div>
+
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+
+            <p class="login-box-msg">
+            {% if msg %}
+              {% if error %}
+                <span class="text-danger">{{ msg | safe }}</span>
+              {% else %}
+                <span class="text-success">{{ msg | safe }}</span>
+              {% endif %}
+            {% else %}
+                Add your credentials
+            {% endif %}
+        </p>
+
+        <form method="post" action="">
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
+
+       
+          {% for item in form%}
+            {% if item.id != 'submit' %}
+              <div class="input-group mb-3">
+                {{ item }}
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    {% if item.id == 'username' %}
+                    <span class="fa fa-user"></span>
+                    {% else %}
+                    <span class="fas fa-lock"></span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% else %}
+            <div class="row">
+              <div class="col-12">
+                  {{ item }}
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </form>
+
+        <br /><br />
+
+        <div class="text-center">
+          <a target="_blank" rel="noopener noreferrer" href="www.tomware.it">
+            <img src="{{ url_for('static', filename='assets/img/TomWareLogo.png') }}" alt="Logo" class="w-50">
+         </a>
+        </div>
+
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="{{ url_for('static', filename='assets/node_modules/jquery/dist/jquery.min.js') }}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock javascripts %}

@@ -1,0 +1,55 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="https://www.tomware.it/" class="brand-link bg-danger d-flex justify-content-center">
+    <img src="{{ url_for('static', filename='assets/img/TomWareLogo.png') }}" alt="tomware" class="brand-image opacity08" >
+    <!--  non-breaking space -->
+    <span class="brand-text font-weight-light">&nbsp;</span>
+  </a>
+  
+  <!-- Sidebar -->
+  <div class="sidebar">
+
+    <!-- without this the sidebar subvoice will not work ------ don't know why -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="hidden">
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+        {% for menu in sidebar_menus  %}
+          {% if menu.belonging == 0 %}
+          <li class="nav-item has-treeview  {% if menu.title in segment %} menu-open {% endif %}">
+            <a href="#" class="nav-link {% if menu.title in segment %} active {% endif %}">
+              <i class="nav-icon {{ menu.icon }}"></i>
+              <p>
+                {{ menu.title }}
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              {% for item in sidebar_belonging_list  %}
+              {% if item.belonging == menu.id %}
+              <li class="nav-item">
+                <a href=" {{ item.link }}" class="nav-link {% if item.link in segment %} active {% endif %}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{ item.title }}</p>
+                </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

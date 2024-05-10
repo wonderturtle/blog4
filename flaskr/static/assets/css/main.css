@@ -1,0 +1,156 @@
+.header-block {
+    padding-bottom: 2px !important;
+}
+
+.select2-selection__choice {
+    background-color: #007bff !important;
+}
+
+.select2-selection__choice__remove {
+    color: white !important;
+}
+
+.dropdown-menu {
+    min-width: 300px !important;
+}
+
+/* used in navbar for navbar */
+.dropdown-menu-min-height {
+    min-height: 180px !important;
+}
+
+/* used in siedebar for logo */
+.opacity08 {
+    opacity: .8 !important;
+}
+
+/* used in start_page for button of activity */
+.activity-btn {
+    background-color: #605ca8 !important;
+    color: white !important;
+}
+
+/* font size section */
+.font-size-20 {
+    font-size: 20px !important;
+}
+
+.font-size-15 {
+    font-size: 15px !important;
+}
+
+.font-size-medium {
+    font-size: medium !important;
+}
+
+.font-size-small {
+    font-size: small !important;
+}
+
+.font-size-large {
+    font-size: large !important;
+}
+
+/* end font size section */
+
+.border-purple {
+    border: #6f42c1 1px solid !important;
+}
+
+.background-color-purple {
+    background-color: #6f42c1 !important;
+    color: white !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.modal-h4-margin {
+    margin-left: 20px !important;
+    margin-top: 20px !important;
+    margin-right: 20px !important;
+}
+
+.error-style {
+    font-weight: bold !important;
+    width: 100% !important;
+}
+
+.padding-bottom-1 {
+    padding-bottom: 1px !important;
+}
+
+.m-left-15 {
+    margin-left: 15px !important;
+}
+
+.m-left-10 {
+    margin-left: 10px !important;
+}
+
+.border-5-blue {
+    border-top: 5px solid #007bff !important;
+}
+
+.txt-decoration-none {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+#addCustomerBtn{
+    border: 1px solid #ced4da;
+
+}
+
+.height-25 {
+    height: 25px !important;
+}
+
+.width-90 {
+    width: 90% !important;
+}
+
+.dropdow-style {
+    margin-bottom: 0px !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #bbbec4 !important;
+}
+
+table.childTable {
+    border: 1px solid #a5a5a5 !important;
+}
+
+/* fix for select2 selection */
+span.select2-selection{
+    height: 39px !important;
+}
+
+hr.hr-bold{
+    border: 1px solid rgb(120, 120, 120);
+}
+
+/* Styling the button to look like a hyperlink */
+.link-button {
+    background: none;        /* No background */
+    border: none;            /* No border */
+    color: #007bff;             /* Text color blue like a link */
+    text-decoration: underline;  /* Underlined like a link */
+    font-family: Arial, sans-serif; /* Font similar to default hyperlink */
+    font-size: 16px;         /* Matching font size */
+    cursor: pointer;         /* Cursor appears as pointer like a link */
+    padding: 0;              /* Remove padding */
+    margin: 0;               /* Remove margins */
+}
+
+.form-section {
+    display: none;
+    margin-top: 8px;
+    /* border: 1px solid #ccc; */
+    padding: 0px;
+}
+
+.scrollable-card-body {
+    max-height: 500px; /* Maximum height before scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+}

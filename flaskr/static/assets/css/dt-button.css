@@ -1,0 +1,10 @@
+/* Adjust the size and positioning of the buttons of the datatable */
+.buttons-collection {
+    height: 35px !important;
+    margin-left: 15px !important;
+}
+
+.dt-button-collection {
+    left: auto !important;
+    right: 0 !important;
+}

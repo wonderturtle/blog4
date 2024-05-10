@@ -1,0 +1,184 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6 ">
+          <h1>Profile</h1>
+        </div>
+
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">User Profile</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <section class="container-fluid">
+    <a class="btn btn-sm btn-app bg-primary" href="{{ url_for('profile.profile_edit',id=user.id) }}"> 
+      <i class="fa fa-solid fa-user-edit"></i>
+      Edit
+    </a>
+    
+    {% include 'includes/show_error.html' %}
+
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                {% if user.image %}
+                  <img src="data:image/jpeg/jpg/png/svg;base64,{{ image }}" alt="Profile" class="rounded-circle" width="150">
+                {% else %}
+                  <img src="{{ url_for('static', filename='assets/img/download.jpg') }}" alt="Profile" class="rounded-circle" width="150">
+                {% endif %}
+              </div>
+
+              <h3 class="profile-username text-center">
+                {{ user.username }}
+              </h3>
+
+              <p class="text-muted text-center">
+                {{ user.email }}
+              </p>
+
+              <p class="text-muted text-center">
+                <strong> {{ user.role.role }} </strong>
+              </p>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <form class="d-flex flex-column align-items-center text-center"
+                  action="{{ url_for('profile.update_user_image', id=user.id) }}" method="POST"
+                  enctype="multipart/form-data">
+                  
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
+                  <div class="d-flex w-100 justify-content-around">
+                    <label class="btn btn-outline-primary m-0">
+                      Choose Image
+                      <input type="file" name="file" accept="image/*" class="d-none" required>
+                    </label>
+                    <button type="submit" class="btn btn-primary">Update Image</button>
+                  </div>
+                </form>
+            </div>
+
+          </div>
+          <!-- /.card -->
+
+          <!-- About Me Box -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Account information</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <strong><i class="fa fa-user"></i> Username</strong>
+
+              <p class="text-muted">
+                {{ user.username }}
+              </p>
+
+              <hr>
+
+              <strong><i class="fa fa-at"></i> Email</strong>
+
+              <p class="text-muted">{{ user.email }}</p>
+
+              <hr>
+
+              <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+
+              <p class="text-muted">{{user.note}}</p>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header p-2 card card-outline card-primary font-size-20">
+              Other Data
+            </div><!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="active tab-pane" id="activity">
+                  <!-- Post -->
+                  <form class="form-horizontal">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/> 
+                    <div class="card-body p-2">
+                      <div class="form-group row">
+                        <label for="role" class="col-sm-2 col-form-label">Role</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="role" value="{{ user.role.role }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="name" value="{{ user.name }}" disabled>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="surname" class="col-sm-2 col-form-label">Surname</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="surname" value="{{ user.surname }}"
+                            disabled>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="gender" class="col-sm-2 col-form-label">Sex</label>
+                        <div class="col-sm-10">
+                          {% if user.m_or_f_id == 0 %}
+                          <input type="text" class="form-control" id="gender" value="Uomo" disabled>
+                          {% else %}
+                          <input type="text" class="form-control" id="gender" value="Donna" disabled>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
+                  <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          {% include "profile/change_password_modal.html" %}
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+{% endblock javascripts %}

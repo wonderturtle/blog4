@@ -1,0 +1,10 @@
+<div class=" d-flex m-1" id="divAlert">
+    {% if msg %}
+        {% if error == "True" %}
+        <span class="alert alert-danger w-100 text-center m-0" id="alert_msg">Errore: {{ msg | safe }}</span>
+        {% else %}
+        <span class="alert alert-success w-100 text-center m-0" id="alert_msg">{{ msg | safe }}</span>
+        {% endif %}
+        <script src="{{url_for('static', filename='assets/js/show-error.js')}}"></script>
+    {% endif %}
+  </div>
