@@ -8,4 +8,4 @@ const fields = [
 ];
 
 // create datatable passing the selector, url of ajax, the filed, and false because i don't want the rowchild
-createDataTable('table.dataTableServersideClass', '/user/datatable', fields, false);
+createDataTable('table.dataTableServersideClass', '/app/user/datatable', fields, false);
