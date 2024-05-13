@@ -33,7 +33,7 @@ def inject_sidebar_items():
     belonging_list = []
     for menu in menus:
         if menu.belonging != 0:
-            if request.remote_addr != 'blog2.tomware.it':
+            if request.remote_addr == '127.0.0.1':
                 #if we are using it with plesk we need to put /app/in front of the link
                 belonging_list.append({
                     'menu_id': menu.id,

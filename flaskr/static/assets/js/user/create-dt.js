@@ -6,7 +6,12 @@ const fields = [
     { data: 'email', orderable: true, searchable: true },
     { data: 'role', orderable: true, searchable: true }
 ];
-var datatablePath =  document.getElementById('datatablePath').textContent;
-console.log("Datatable path:", datatablePath); // Print the datatablePath;
+$(document).ready(function() {
+    // Retrieve the value of the data-path attribute
+    var datatablePath = $('#datatablePath').data('path');
+    console.log("Datatable path:", datatablePath);
+    // Now you can use the datatablePath variable as needed in your JavaScript code
+    createDataTable('table.dataTableServersideClass', datatablePath, fields, false);
+});
 // create datatable passing the selector, url of ajax, the filed, and false because i don't want the rowchild
-createDataTable('table.dataTableServersideClass', datatablePath, fields, false);
+

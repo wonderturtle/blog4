@@ -32,7 +32,7 @@ def view():
     users = UserRoleView.query.all()
     row_count = len(users)
     dtpaths = []
-    if request.remote_addr == 'http://127.0.0.1:5000/':
+    if request.remote_addr == '127.0.0.1':
         dtpath = '/user/datatable'
         dtpaths.append(dtpath)
 
