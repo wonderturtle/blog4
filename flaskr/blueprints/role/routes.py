@@ -26,7 +26,8 @@ def view():
     error = session.pop('error', None)
     roles = roleService.get_list()
     row_count = len(roles)
-    print(session)
+    print(f'remote address: {request.remote_addr}')
+    
 
     return render_template("role/view.html", role_list=roles, tot=row_count, msg=msg, error=error)
 

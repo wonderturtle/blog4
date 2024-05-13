@@ -59,7 +59,6 @@ def login():
                 # insert the permission of the role in the session: 
                 session['permissions_r'], session['permissions_w'] = write_permission_in_list()
 
-                print(session)
                 return redirect(url_for('user.view'))
             else:
                 session['error'] = True
