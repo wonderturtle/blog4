@@ -11,13 +11,13 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="/static/assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css')}}">
 
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="/static/assets/node_modules/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/node_modules/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   
   <!-- Theme style -->
-  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/assets/css/adminlte.min.css')}}">
 
 {% endblock stylesheets %}
 
@@ -78,7 +78,7 @@
 
         <div class="text-center">
           <a target="_blank" rel="noopener noreferrer" href="www.tomware.it">
-            <img src="url_for('static', filename='assets/img/TomWareLogo.png')" alt="Logo" class="w-50">
+            <img src="{{url_for('static', filename='assets/img/TomWareLogo.png')}}" alt="Logo" class="w-50">
          </a>
         </div>
 

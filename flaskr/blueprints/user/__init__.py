@@ -11,7 +11,7 @@ user = Blueprint(
 
         "user",
         __name__,
-        template_folder = 'templates',
+        template_folder = 'templates/user',
         static_folder = 'flaskr/static',
         url_prefix = '/user'
 

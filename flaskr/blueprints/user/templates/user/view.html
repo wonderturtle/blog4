@@ -75,6 +75,6 @@
 {{ super() }}
 {% include 'includes/datatables/style.html' %}
 
-<script src="/flaskr/static/assets/js/user/create-dt.js"></script>
+<script src="{{url_for('static', filename='assets/js/user/create-dt.js')}}"></script>
 <!-- <script src="/static/assets/js/user/child-dt.js"></script> -->
 {% endblock javascripts %}
