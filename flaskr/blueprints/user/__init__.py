@@ -31,27 +31,28 @@ def inject_sidebar_items():
         # append the id in a list to have all the menu for a specific role
         menu_list.append(menu_id)  
     
+    previous_url = request.headers.get('Referer')
     menus = Menu.query.filter((Menu.id.in_(menu_list)) | (Menu.belonging.in_(menu_list))).all()
     belonging_list = []
     for menu in menus:
-
-        if menu.belonging != 0:
-            if request.remote_addr == '127.0.0.1':
-                #if we are using it with plesk we need to put /app/in front of the link
-                belonging_list.append({
-                    'menu_id': menu.id,
-                    'belonging': menu.belonging,
-                    'title': menu.title,
-                    'link': menu.link
-                })
-        
-            else:
-                  belonging_list.append({
-                    'menu_id': menu.id,
-                    'belonging': menu.belonging,
-                    'title': menu.title,
-                    'link': f"/app{menu.link}"
-                })
+           if menu.belonging != 0:
+                
+                if previous_url.startswith('https://blog2.tomware.it'):
+                    #if we are using it with plesk we need to put /app/in front of the link
+                    belonging_list.append({
+                        'menu_id': menu.id,
+                        'belonging': menu.belonging,
+                        'title': menu.title,
+                        'link': f"/app{menu.link}"
+                    })
+            
+                else:
+                    belonging_list.append({
+                        'menu_id': menu.id,
+                        'belonging': menu.belonging,
+                        'title': menu.title,
+                        'link': menu.link
+                    })
 
     return dict(sidebar_menus=menus, sidebar_belonging_list=belonging_list)
 

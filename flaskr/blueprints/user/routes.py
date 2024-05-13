@@ -107,7 +107,7 @@ def role():
     return the datail of the role in a json object
     '''
     if request.method == 'POST':
-        print(request.form.get('id'))
+        # print(request.form.get('id'))
         user = userService.get_user(request.form.get('id'))
         role = user.role
         data = [
@@ -115,7 +115,7 @@ def role():
         ]
 
         result = {'data': data}
-        print(result)
+        # print(result)
         return jsonify(result)
 
 
