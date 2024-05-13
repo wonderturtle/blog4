@@ -195,21 +195,34 @@ class UserService:
         # Retrieve a subset of records based on pagination parameters
         items = query.offset(start).limit(length).all()
         # Retrieve a subset of records based on pagination parameters
-
+        previous_url = request.headers.get('Referer')
+        if previous_url.startswith('https://blog2.tomware.it'):
         # Prepare the data for the DataTables response
-        data_list = [
-            {
-                'DT_RowId':f'{item.id}',
-                'id': f"""<a href="url_for('profile.detail', id={item.id}"><i class="fa fa-search" aria-hidden="true"></i></a>""",
-                'name': item.name,
-                'surname': item.surname,
-                'username': item.username,
-                'email': item.email,
-                'role': item.role,
-            }
-            for item in items
-        ]
-
+            data_list = [
+                {
+                    'DT_RowId':f'{item.id}',
+                    'id': f'<a href="/app/profile/detail/{item.id}"><i class="fa fa-search" aria-hidden="true"></i></a>',
+                    'name': item.name,
+                    'surname': item.surname,
+                    'username': item.username,
+                    'email': item.email,
+                    'role': item.role,
+                }
+                for item in items
+            ]
+        else:
+            data_list = [
+                {
+                    'DT_RowId':f'{item.id}',
+                    'id': f'<a href="/profile/detail/{item.id}"><i class="fa fa-search" aria-hidden="true"></i></a>',
+                    'name': item.name,
+                    'surname': item.surname,
+                    'username': item.username,
+                    'email': item.email,
+                    'role': item.role,
+                }
+                for item in items
+            ]
         # Create the response dictionary
         response = {
             'draw': draw,
