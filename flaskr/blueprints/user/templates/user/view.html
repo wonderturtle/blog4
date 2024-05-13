@@ -69,6 +69,8 @@
     <!-- /.content -->
 </div>
 <input type="hidden" id="csrf_token" name="csrf_token" value="{{ csrf_token() }}">
+<div id="datatablePath" data-ids="{{ dtpath }}" class="d-none"></div>
+
 
 {% endblock content %}
 {% block javascripts %}
@@ -76,5 +78,7 @@
 {% include 'includes/datatables/style.html' %}
 
 <script src="{{ url_for('static', filename='assets/js/user/create-dt.js') }}"></script>
+
+
 
 {% endblock javascripts %}

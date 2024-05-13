@@ -31,9 +31,17 @@ def view():
     error = session.pop('error', None)
     users = UserRoleView.query.all()
     row_count = len(users)
+    dtpaths = []
+    if request.remote_addr == 'blog2.tomware.it':
+        dtpath = '/app/user/datatable'
+        dtpaths.append(dtpath)
+
+    else:
+        dtpath = '/user/datatable'
+        dtpaths.append(dtpath)
 
 
-    return render_template("user/view.html", user_list = users, tot = row_count, msg = msg, error = error)
+    return render_template("user/view.html", user_list = users, dtpath=dtpath, tot = row_count, msg = msg, error = error)
     
 
 @user.route('/datatable', methods=['GET', 'POST'])

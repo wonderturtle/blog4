@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import request
 from flask_login import current_user
 from flaskr.models.menu import Menu
 
@@ -35,12 +36,22 @@ def inject_sidebar_items():
     belonging_list = []
     for menu in menus:
         if menu.belonging != 0:
-            belonging_list.append({
-                'menu_id': menu.id,
-                'belonging': menu.belonging,
-                'title': menu.title,
-                'link': menu.link
-            })
+            if request.remote_addr != 'blog2.tomware.it':
+                #if we are using it with plesk we need to put /app/in front of the link
+                belonging_list.append({
+                    'menu_id': menu.id,
+                    'belonging': menu.belonging,
+                    'title': menu.title,
+                    'link': menu.link
+                })
+        
+            else:
+                  belonging_list.append({
+                    'menu_id': menu.id,
+                    'belonging': menu.belonging,
+                    'title': menu.title,
+                    'link': f"/app{menu.link}"
+                })
 
     return dict(sidebar_menus=menus, sidebar_belonging_list=belonging_list)
 
