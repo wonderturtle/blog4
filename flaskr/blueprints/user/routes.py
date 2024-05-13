@@ -32,12 +32,12 @@ def view():
     users = UserRoleView.query.all()
     row_count = len(users)
     dtpaths = []
-    if request.remote_addr == 'blog2.tomware.it':
-        dtpath = '/app/user/datatable'
+    if request.remote_addr == 'http://127.0.0.1:5000/':
+        dtpath = '/user/datatable'
         dtpaths.append(dtpath)
 
     else:
-        dtpath = '/user/datatable'
+        dtpath = '/app/user/datatable'
         dtpaths.append(dtpath)
 
 
