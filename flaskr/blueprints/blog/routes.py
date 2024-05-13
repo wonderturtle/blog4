@@ -13,4 +13,4 @@ def view():
       {'title': 'Post 1', 'content': 'Content for post 1'},
       {'title': 'Post 2', 'content': 'Content for post 2'}
   ]
-  return render_template('index.html', posts=posts, title = 'Blog')
+  return render_template('blog/index.html', posts=posts, title = 'Blog')
