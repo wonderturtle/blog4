@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{url_for('static', filename='assets/img/TomWareLogo.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/TomWareLogo.png') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
@@ -13,13 +13,13 @@
   
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/adminlte.min.css') }}">
 
     <!-- select2 new -->
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/node_modules/select2/dist/css/select2.min.css') }}">
 
     <!-- select2 -->
-    <link rel="stylesheet" href="{{url_for('static', filename='assets/node_modules/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/node_modules/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css') }}">
 
 
     <!-- Include jQuery -->
@@ -27,14 +27,14 @@
 
     
     <!-- jQuery UI 1.11.4 -->
-    <script src="{{url_for('static', filename='assets/node_modules/jquery-ui-dist/jquery-ui.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/node_modules/jquery-ui-dist/jquery-ui.min.js') }}"></script>
     
     <!-- select2 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/node_modules/select2/dist/css/select2.min.css') }}">
 
 
     <!-- custom datatable serverside -->
-    <script src="{{url_for('static', filename='assets/DataTables/createServerSideTable.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/DataTables/createServerSideTable.js') }}"></script>
 
 
   <title>
@@ -69,17 +69,17 @@
 
 
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script src="{{url_for('static', filename='assets/js/ui-fix.js')}}"></script>
+  <script src="{{ url_for('static', filename='assets/js/ui-fix.js') }}"></script>
 
   <!-- Bootstrap 4 -->
-  <script src="{{url_for('static', filename='assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='assets/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 
   <!-- AdminLTE App -->
-  <script src="{{url_for('static', filename='assets/js/adminlte.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='assets/js/adminlte.min.js') }}"></script>
   
   <!-- multiple select -->
-  <script src="{{url_for('static', filename='assets/node_modules/select2/dist/js/select2.full.min.js')}}"></script>
-  <script src="{{url_for('static', filename='assets/node_modules/bs-custom-file-input/dist/bs-custom-file-input.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='assets/node_modules/select2/dist/js/select2.full.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/node_modules/bs-custom-file-input/dist/bs-custom-file-input.min.js') }}"></script>
 
 
 

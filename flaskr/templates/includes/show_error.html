@@ -5,6 +5,6 @@
         {% else %}
         <span class="alert alert-success w-100 text-center m-0" id="alert_msg">{{ msg | safe }}</span>
         {% endif %}
-        <script src="{{url_for('static', filename='assets/js/show-error.js')}}"></script>
+        <script src="{{ url_for('static', filename='assets/js/show-error.js') }}"></script>
     {% endif %}
   </div>
