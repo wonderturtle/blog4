@@ -10,7 +10,7 @@ import base64
 # Blueprint definition
 blog = Blueprint("blog", __name__, 
                  template_folder = 'templates', 
-                 static_folder = 'flaskr/static',
+                 static_folder = 'static',
                  url_prefix = '/blog')
 
 # --------------------------------------------------

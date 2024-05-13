@@ -6,8 +6,8 @@
 {% block content %} 
  <p>
     <h1>Blog Posts</h1>
-
     <img src="{{ url_for('static', filename='images/pets.jpg') }}" alt="pets">
+   
     <ul>
       {% for post in posts %}
         <li>
@@ -16,5 +16,5 @@
         </li>
       {% endfor %}
     </ul>
-    <input type="hidden" id="csrf_token" name="csrf_token" value="{{ csrf_token() }}">
+
 {% endblock %}

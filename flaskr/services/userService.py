@@ -200,7 +200,7 @@ class UserService:
         data_list = [
             {
                 'DT_RowId':f'{item.id}',
-                'id': f'<a href="/profile/detail/{item.id}"><i class="fa fa-search" aria-hidden="true"></i></a>',
+                'id': f"""<a href="url_for('profile.detail', id={item.id}"><i class="fa fa-search" aria-hidden="true"></i></a>""",
                 'name': item.name,
                 'surname': item.surname,
                 'username': item.username,

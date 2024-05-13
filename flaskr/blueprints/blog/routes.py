@@ -8,7 +8,7 @@ from flaskr.globals_function import check_permission_r, check_permission_w
 
 
 
-@blog.route('/')
+@blog.route('/view')
 @login_required
 @check_permission_r
 def view():
