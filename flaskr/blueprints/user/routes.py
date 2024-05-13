@@ -87,6 +87,7 @@ def insert():
 
         if code == tw_globals.RET_CREATED:
             session['error'] = False
+            
         
         else:
             session['error'] = True

@@ -11,7 +11,7 @@ user = Blueprint(
 
         "user",
         __name__,
-        template_folder = 'templates/user',
+        template_folder = 'templates',
         static_folder = 'flaskr/static',
         url_prefix = '/user'
 
@@ -67,7 +67,7 @@ def inject_user_data():
         role_id = user.role_id
         role = Role.query.filter_by(id = role_id).first()
 
-        if user.image is not None:
+        if user.image :
             image_base64 = base64.b64encode(user.image).decode('utf-8')
             return dict(user_logged=user_logged, image_base64=image_base64, role=role)
         #print(role.id)

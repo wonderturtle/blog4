@@ -4,8 +4,6 @@
 {% block title %}{{ title }} {% endblock %}
 
 {% block content %} 
-To see users click 
-<a href="{{url_for('auth.login')}}">here</a>. </p>
  <p>
     <h1>Blog Posts</h1>
 
@@ -18,5 +16,5 @@ To see users click
         </li>
       {% endfor %}
     </ul>
-
+    <input type="hidden" id="csrf_token" name="csrf_token" value="{{ csrf_token() }}">
 {% endblock %}
