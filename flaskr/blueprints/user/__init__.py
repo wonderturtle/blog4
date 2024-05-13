@@ -30,30 +30,17 @@ def inject_sidebar_items():
         menu_id = permission.menu_id
         # append the id in a list to have all the menu for a specific role
         menu_list.append(menu_id)  
-    
-    previous_url = request.headers.get('Referer')
-    session['previous_url']=previous_url
+
     menus = Menu.query.filter((Menu.id.in_(menu_list)) | (Menu.belonging.in_(menu_list))).all()
     belonging_list = []
     for menu in menus:
            if menu.belonging != 0:
-                
-                if session['previous_url'].startswith('https://blog2.tomware.it'):
-                    #if we are using it with plesk we need to put /app/in front of the link
-                    belonging_list.append({
-                        'menu_id': menu.id,
-                        'belonging': menu.belonging,
-                        'title': menu.title,
-                        'link': f"/app{menu.link}"
-                    })
-            
-                else:
-                    belonging_list.append({
-                        'menu_id': menu.id,
-                        'belonging': menu.belonging,
-                        'title': menu.title,
-                        'link': menu.link
-                    })
+                belonging_list.append({
+                    'menu_id': menu.id,
+                    'belonging': menu.belonging,
+                    'title': menu.title,
+                    'link': menu.link
+                })
 
     return dict(sidebar_menus=menus, sidebar_belonging_list=belonging_list)
 

@@ -196,22 +196,8 @@ class UserService:
         items = query.offset(start).limit(length).all()
         # Retrieve a subset of records based on pagination parameters
         
-        if session['previous_url'].startswith('https://blog2.tomware.it'):
         # Prepare the data for the DataTables response
-            data_list = [
-                {
-                    'DT_RowId':f'{item.id}',
-                    'id': f'<a href="/app/profile/detail/{item.id}"><i class="fa fa-search" aria-hidden="true"></i></a>',
-                    'name': item.name,
-                    'surname': item.surname,
-                    'username': item.username,
-                    'email': item.email,
-                    'role': item.role,
-                }
-                for item in items
-            ]
-        else:
-            data_list = [
+        data_list = [
                 {
                     'DT_RowId':f'{item.id}',
                     'id': f'<a href="/profile/detail/{item.id}"><i class="fa fa-search" aria-hidden="true"></i></a>',

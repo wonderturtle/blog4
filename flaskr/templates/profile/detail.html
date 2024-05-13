@@ -45,7 +45,7 @@
             <div class="card-body box-profile">
               <div class="text-center">
                 {% if user.image %}
-                  <img src="data:image/jpeg/jpg/png/svg;base64,{{ image }}" alt="Profile" class="rounded-circle" width="150">
+                  <img src="data:image/jpeg/jpg/png/svg;base64,{{ my_image }}" alt="Profile" class="rounded-circle" width="150">
                 {% else %}
                   <img src="{{ url_for('static', filename='assets/img/download.jpg') }}" alt="Profile" class="rounded-circle" width="150">
                 {% endif %}
