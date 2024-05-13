@@ -195,8 +195,8 @@ class UserService:
         # Retrieve a subset of records based on pagination parameters
         items = query.offset(start).limit(length).all()
         # Retrieve a subset of records based on pagination parameters
-        previous_url = request.headers.get('Referer')
-        if previous_url.startswith('https://blog2.tomware.it'):
+        
+        if session['previous_url'].startswith('https://blog2.tomware.it'):
         # Prepare the data for the DataTables response
             data_list = [
                 {

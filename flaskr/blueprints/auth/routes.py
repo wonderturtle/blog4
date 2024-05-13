@@ -40,7 +40,7 @@ def login():
     msg = session.pop('msg', None)
     error = session.pop('error', None)
     form = LoginForm(request.form)
-
+    
     if request.method == 'POST' and form.validate():
         user = userService.get_user_by_username(form.username.data)
         if user:
