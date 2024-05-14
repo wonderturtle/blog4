@@ -44,8 +44,9 @@ def detail(id):
 
     if user.image:
      
-        my_image = base64.b64encode(bytes(str(user.image), 'utf-8')).decode('utf-8')
-        return render_template("profile/detail.html", my_image = my_image, logged_in = True,form = form,  msg = msg, error = error, user = user, id = user.id)    
+        image = base64.b64encode(user.image).decode('utf-8')
+
+        return render_template("profile/detail.html", image = image, logged_in = True,form = form,  msg = msg, error = error, user = user, id = user.id)    
     
     return render_template("profile/detail.html",logged_in = True, form = form,  msg = msg, error = error, user = user)    
 
