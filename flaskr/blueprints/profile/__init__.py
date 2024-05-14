@@ -40,7 +40,7 @@ def inject_sidebar_items():
             'menu_id': menu.id,
             'belonging': menu.belonging,
             'title': menu.title,
-            'link': f"/app{menu.link}"
+            'link': {menu.link}
         })
 
     return dict(sidebar_menus=menus, sidebar_belonging_list=belonging_list)

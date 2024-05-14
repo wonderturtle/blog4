@@ -16,6 +16,9 @@ class Role(db.Model):
     fk_user_update      = db.Column(db.Integer, db.ForeignKey('t_user.id'), default=0, nullable=False)
     last_update         = db.Column(db.DateTime, nullable=False, default='1970-01-01 01:00:00')
     
+
+    userinsert               = db.relationship("User", foreign_keys=[fk_user_insert]) 
+    userupdate               = db.relationship("User", foreign_keys=[fk_user_update]) 
     # def __init__(self, role, 
     #               fk_user_insert, fk_user_update, insert_date, 
     #               start_page = '', note = '',

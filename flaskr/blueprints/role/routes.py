@@ -141,4 +141,4 @@ def role_update(id):
         session['msg'] = msg
         session['error'] = error
 
-    return redirect(url_for("role.role_detail", id = id))
+    return redirect(url_for("role.role_detail", id = id, role = role))
