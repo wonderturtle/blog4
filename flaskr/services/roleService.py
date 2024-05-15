@@ -12,9 +12,11 @@ class RoleService:
     # this function is used to set all the values of the role to update
     def set_all_values_for_update(self, newRole, id: int):
         role = self.getRole(id)
-        role.role = newRole.role
-        role.note = newRole.note
-        
+        role.role                    = newRole.role
+        role.start_page              = newRole.start_page
+        role.note                    = newRole.note
+        role.fk_user_update          = newRole.fk_user_update
+        role.last_update             = newRole.last_update
 
     def create_or_update(self, role: dict, id=None) -> None:
 

@@ -44,7 +44,7 @@ class PermissionService:
         # Iterate over each field and value in items
         for field, value in items:
             # Ignore the fields 'role_id', 'note', and 'role'
-            if field == 'role_id' or field == 'note' or field == 'role' or field == 'csrf_token':
+            if field == 'role_id' or field == 'note' or field == 'role' or field == 'csrf_token' or field == 'start_page':
                 continue
 
             # Split the field into menu_id and read_or_write

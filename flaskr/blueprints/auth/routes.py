@@ -2,6 +2,7 @@ from flaskr.blueprints.auth import auth
 from flask import redirect, request, url_for, render_template, session, g
 from flaskr.services.userService import UserService
 from flaskr.services.roleService import RoleService
+
 from flaskr.forms.registrationForm import RegistrationForm
 from flaskr.forms.loginForm import LoginForm
 from flask_login import login_user
@@ -11,6 +12,7 @@ from flaskr.models.user import User
 
 userService = UserService()
 roleService = RoleService()
+
 
 
 @login_manager.user_loader
@@ -49,7 +51,8 @@ def login():
                 login_user(user)
                 session['logged_in'] = True
                 session['role_id'] = user.role_id
-
+                # here is where we get the start page from the role start_page 
+                role = roleService.getRole(user.role_id)
                 # if the user is admin store is_admin as true in the session
                 if user.role_id == 1:
                     session['is_admin'] = True
@@ -59,7 +62,7 @@ def login():
                 # insert the permission of the role in the session: 
                 session['permissions_r'], session['permissions_w'] = write_permission_in_list()
 
-                return redirect(url_for('user.view'))
+                return redirect(url_for(role.start_page))
             else:
                 session['error'] = True
                 session['msg'] = 'Password Errata'

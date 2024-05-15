@@ -10,6 +10,7 @@ from flaskr.forms.roleForm import RoleForm
 from flaskr.services.menuService import MenuService
 from flaskr.services.permissionService import PermissionService
 from flaskr.globals_function import check_permission_r, check_permission_w
+from datetime import datetime
 
 permissionService = PermissionService()
 menuService = MenuService()
@@ -39,6 +40,10 @@ def role_insert():
     this route is to insert a new role
     '''
     role_form = RoleForm(request.form)
+    role_form.fk_user_insert.data        = session['_user_id']
+    role_form.insert_date.data           = datetime.now()
+    role_form.fk_user_update.data        = 0
+
     if request.method == "POST" and role_form.validate():
         code, result = roleService.create_or_update(role_form.data)
         session['msg'] = result
@@ -126,12 +131,16 @@ def role_update(id):
 
     the request will have all the checkbox values to 0 and the checkbox checked with value = on 
     '''
-    if request.method == 'POST':
-        role = roleService.getRole(id)
-        fole_form = RoleForm(request.form, obj=role)
-        role_id = request.form.get('role_id')
-        role_form_data = fole_form.data
+    role = roleService.getRole(id)
+    fole_form = RoleForm(request.form, obj=role)
+    role_id = request.form.get('role_id')
+    if request.method == 'POST' and  fole_form.validate():
+  
+       
+        fole_form.fk_user_update.data        = session['_user_id']
+        fole_form.last_update.data           = datetime.now()
 
+        role_form_data = fole_form.data
         # update the role
         code, msg = roleService.create_or_update(role_form_data, id)
         error = True if code == tw_globals.RET_DB_ERROR else False

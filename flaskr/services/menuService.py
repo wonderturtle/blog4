@@ -12,3 +12,8 @@ class MenuService:
     # return all the menus 
     def get_list(self) -> list:
         return Menu.query.all()
+
+    
+    def getMenu(self, id: int) -> Menu:
+        return Menu.query.get_or_404(id)
+    

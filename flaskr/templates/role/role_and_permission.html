@@ -28,17 +28,27 @@
     <form  action="{{ url_for('role.role_update', id=role.id) }}" method="post">
         <section class="container-fluid">
             <button class="btn btn-app bg-success" type="submit">
-                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                <i class="fa fa-save" aria-hidden="true"></i>
                 Save
             </button>
+
+            <a class="btn btn-sm btn-app bg-secondary" href="{{ url_for('role.view') }}"> 
+                <i class="fa fa-undo"></i>
+                Back
+              </a>
         </section>
     {% elif action == 'insert' %}
     <form action="{{ url_for('role.role_insert', id=role.id) }}" method="post">
         <section class="container-fluid">
             <button class="btn btn-app bg-success" type="submit">
-                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                <i class="fa fa-save" aria-hidden="true"></i>
                 Save
             </button>
+
+            <a class="btn btn-sm btn-app bg-secondary" href="{{ url_for('role.view') }}"> 
+                <i class="fa fa-undo"></i>
+                Back
+              </a>
         </section>
     {% else %}
         <section class="container-fluid">
@@ -79,19 +89,62 @@
                             <div class="card-body">
                                 {% for item in role_form %}
                                     {% if action != 'insert' %}
+                                    {% if item.id not in ["submit", "id", "active", "image", "inserted_by", "updated_by", "insert_date", "last_update"] and action == None %}
+                                    {% elif item.id == 'role' %}
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" disabled >
+                                            </div>
+                                        </div>
+                                        {% elif item.id == 'start_page' %}
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" disabled >
+                                            </div>
+                                        </div>
+                                        {% elif item.id == 'note' %}
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" disabled >
+                                            </div>
+                                        </div>
+
+                                        {% endif %}
+                                  
+                                {% elif item.id not in ["submit", "id", "active", "image", "inserted_by", "updated_by", "insert_date", "last_update" ] and action == 'insert' %}
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" >
+                                        </div>
+                                    </div>
+                                {% elif item.id not in ["submit", "id", "active", "image", "inserted_by", "updated_by", "insert_date", "last_update" ] and action == 'edit'  %}
+                                
+                                        {% elif item.id == 'role' %}
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">{{item.label}}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" disabled >
+                                            </div>
+                                        </div>
+                                        {% elif item.id == 'start_page' %}
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">{{item.label}}</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" {% if action != "edit" %} disabled {% endif %} >
                                             </div>
                                         </div>
-                                    {% else %}
+                                        {% elif item.id == 'note' %}
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label">{{item.label}}</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" >
+                                                <input type="text" class="form-control" name="{{ item.name }}"  id="{{ item.id }}" value="{{ item.data }}" {% if action != "edit" %} disabled {% endif %} >
                                             </div>
                                         </div>
+                                    
                                     {% endif %}
                                 {% endfor %}
                             </div>

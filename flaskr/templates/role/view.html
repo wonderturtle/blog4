@@ -26,10 +26,10 @@
 
     <!-- section for the buttons -->
     <section class="container-fluid">
-        <a class="btn btn-app bg-primary" href="{{ url_for('role.role_insert') }}"> 
-            <i class="fa fa-file"></i>
-            New
-        </a>
+      <a class="btn btn-app bg-primary" href="{{ url_for('role.role_insert') }}">
+        <i class="fa fa-plus"></i>
+        New role
+    </a>
         {% include 'includes/show_error.html' %} 
     </section>
 
@@ -49,6 +49,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Role</th>
+                    <th>Start Page</th>
                     <th>Note</th>
                   </tr>
                   </thead>
@@ -59,9 +60,10 @@
                         <i class="fa fa-search" aria-hidden="true"></i>
                       </a></td>
                       <td data-label="Role">{{ role.role }}</td>
+                      <td data-label="Start Page">{{ role.start_page }}</td>
                       <td data-label="Note">{{ role.note }}</td>
                     </tr>
-                  {% endfor %}csrf
+                  {% endfor %}
                   </tbody>
                 </table>
               </div>
